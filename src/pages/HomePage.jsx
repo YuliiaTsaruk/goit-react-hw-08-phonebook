@@ -16,7 +16,7 @@ export default function HomePage() {
   ) : (
     <div>
       <h2>Wellcome to Phonebook!</h2>
-      <p>Please, Register or Log In to view and add your contacts</p>
+      <p>Please, Register or LogIn in order to get an access to phonebook</p>
     </div>
   );
 }

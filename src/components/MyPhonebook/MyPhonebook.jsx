@@ -1,17 +1,24 @@
 import { ContactForm, Filter, ContactList } from 'components';
 
 import { Container, MaineTitle, Section, Title } from './MyPhonebook.styled';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   selectContacts,
   selectError,
   selectIsLoading,
 } from '../../redux/selectors';
+import { useEffect } from 'react';
+import { fetchContacts } from '../../redux/contacts/operations';
 
 export const MyPhonebook = () => {
   const contacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   return (
     <Container>
