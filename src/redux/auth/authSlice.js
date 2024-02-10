@@ -1,16 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-  user: { name: null, email: null },
-  isLoggedin: false,
-  token: '',
-  isRefreshing: false,
-  isError: false,
-};
-
 export const authSlice = createSlice({
   name: 'authorization',
-  initialState,
+  initialState: {
+    user: { name: null, email: null },
+    isLoggedin: false,
+    token: '',
+    isRefreshing: false,
+    isError: false,
+  },
 
   reducers: {
     resetError: state => {
