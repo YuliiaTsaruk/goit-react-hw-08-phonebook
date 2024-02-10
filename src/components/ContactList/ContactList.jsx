@@ -7,7 +7,7 @@ import {
   selectFilter,
   selectFilteredContacts,
 } from '../../redux/selectors';
-import { deleteContact } from '../../redux/operations';
+import { deleteContact } from '../../redux/contacts/operations';
 import toast from 'react-hot-toast';
 import { useState } from 'react';
 

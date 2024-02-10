@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Report } from 'notiflix';
 import { selectContacts } from '../../redux/selectors';
-import { addContact } from '../../redux/operations';
+import { addContact } from '../../redux/contacts/operations';
 import toast from 'react-hot-toast';
 
 const contactSchema = Yup.object().shape({
