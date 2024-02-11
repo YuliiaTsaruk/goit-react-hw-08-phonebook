@@ -2,6 +2,14 @@ import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/authOperations';
+import {
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  FormErrorMessage,
+} from '@chakra-ui/react';
 
 const registerSchema = Yup.object({
   name: Yup.string().min(3, 'Too Short!').required('Required'),
@@ -27,47 +35,76 @@ export default function RegisterPage() {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <label htmlFor="name">Name</label>
-      <input
-        id="name"
-        name="name"
-        type="text"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        value={formik.values.firstName}
-      />
-      {formik.touched.name && formik.errors.firstName ? (
-        <div>{formik.errors.name}</div>
-      ) : null}
+    <Box
+      maxW="md"
+      mx="auto"
+      mt="8"
+      p="6"
+      borderWidth="1px"
+      borderColor="teal"
+      rounded="lg"
+    >
+      <form onSubmit={formik.handleSubmit}>
+        <FormControl
+          id="name"
+          isInvalid={formik.touched.name && formik.errors.name}
+        >
+          <FormLabel>Name</FormLabel>
+          <Input
+            type="text"
+            name="name"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.name}
+            borderColor="teal"
+          />
+          <FormErrorMessage>{formik.errors.name}</FormErrorMessage>
+        </FormControl>
 
-      <label htmlFor="email">Email Address</label>
-      <input
-        id="email"
-        name="email"
-        type="email"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        value={formik.values.email}
-      />
-      {formik.touched.email && formik.errors.email ? (
-        <div>{formik.errors.email}</div>
-      ) : null}
+        <FormControl
+          id="email"
+          isInvalid={formik.touched.email && formik.errors.email}
+          mt="4"
+        >
+          <FormLabel>Email Address</FormLabel>
+          <Input
+            type="email"
+            name="email"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.email}
+            borderColor="teal"
+          />
+          <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
+        </FormControl>
 
-      <label htmlFor="password">Password</label>
-      <input
-        id="password"
-        name="password"
-        type="text"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        value={formik.values.password}
-      />
-      {formik.touched.password && formik.errors.password ? (
-        <div>{formik.errors.password}</div>
-      ) : null}
+        <FormControl
+          id="password"
+          isInvalid={formik.touched.password && formik.errors.password}
+          mt="4"
+        >
+          <FormLabel>Password</FormLabel>
+          <Input
+            type="password"
+            name="password"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.password}
+            borderColor="teal"
+          />
+          <FormErrorMessage>{formik.errors.password}</FormErrorMessage>
+        </FormControl>
 
-      <button type="submit">Sing Up</button>
-    </form>
+        <Button
+          mt="6"
+          colorScheme="teal"
+          size="md"
+          type="submit"
+          isLoading={formik.isSubmitting}
+        >
+          Sign Up
+        </Button>
+      </form>
+    </Box>
   );
 }

@@ -2,6 +2,14 @@ import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../redux/auth/authOperations';
+import {
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  FormErrorMessage,
+} from '@chakra-ui/react';
 
 const loginSchema = Yup.object({
   password: Yup.string()
@@ -14,7 +22,6 @@ export default function LoginPage() {
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
-      name: '',
       email: '',
       password: '',
     },
@@ -26,34 +33,59 @@ export default function LoginPage() {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <label htmlFor="email">Email Address</label>
-      <input
-        id="email"
-        name="email"
-        type="email"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        value={formik.values.email}
-      />
-      {formik.touched.email && formik.errors.email ? (
-        <div>{formik.errors.email}</div>
-      ) : null}
+    <Box
+      maxW="md"
+      mx="auto"
+      mt="8"
+      p="6"
+      borderWidth="1px"
+      rounded="lg"
+      borderColor="teal"
+    >
+      <form onSubmit={formik.handleSubmit}>
+        <FormControl
+          id="email"
+          isInvalid={formik.touched.email && formik.errors.email}
+        >
+          <FormLabel>Email Address</FormLabel>
+          <Input
+            type="email"
+            name="email"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.email}
+            borderColor="teal"
+          />
+          <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
+        </FormControl>
 
-      <label htmlFor="password">Password</label>
-      <input
-        id="password"
-        name="password"
-        type="text"
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
-        value={formik.values.password}
-      />
-      {formik.touched.password && formik.errors.password ? (
-        <div>{formik.errors.password}</div>
-      ) : null}
+        <FormControl
+          id="password"
+          isInvalid={formik.touched.password && formik.errors.password}
+          mt="4"
+        >
+          <FormLabel>Password</FormLabel>
+          <Input
+            type="password"
+            name="password"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.password}
+            borderColor="teal"
+          />
+          <FormErrorMessage>{formik.errors.password}</FormErrorMessage>
+        </FormControl>
 
-      <button type="submit">Sing In</button>
-    </form>
+        <Button
+          mt="6"
+          colorScheme="teal"
+          size="md"
+          type="submit"
+          isLoading={formik.isSubmitting}
+        >
+          Sign In
+        </Button>
+      </form>
+    </Box>
   );
 }

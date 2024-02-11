@@ -1,12 +1,18 @@
 import styled from 'styled-components';
 
+export const CenteredContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const Container = styled.div`
-  border: 1px solid #efe2e2;
+  border: 1px solid teal;
   border-radius: 16px;
-  margin: 40px;
   padding: 20px;
-  max-width: 400px;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  max-width: 1440px;
+  margin: 10px;
+  min-width: 320px;
 `;
 
 export const Section = styled.div`

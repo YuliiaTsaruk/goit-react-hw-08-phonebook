@@ -1,18 +1,18 @@
+import {
+  Box,
+  Button,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Input,
+} from '@chakra-ui/react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import {
-  Error,
-  StyledBtn,
-  StyledField,
-  StyledForm,
-  StyledLabel,
-} from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
-
-import { Report } from 'notiflix';
 import { selectContacts } from '../../redux/selectors';
 import { addContact } from '../../redux/contacts/operations';
 import toast from 'react-hot-toast';
+import { Report } from 'notiflix';
 
 const contactSchema = Yup.object().shape({
   name: Yup.string().min(3, 'Too Short!').required('Required'),
@@ -58,21 +58,62 @@ export const ContactForm = () => {
         actions.resetForm();
       }}
     >
-      <StyledForm>
-        <StyledLabel>
-          Name
-          <StyledField name="name" />
-          <Error name="name" component="span" />
-        </StyledLabel>
+      {formik => (
+        <Box
+          maxW="md"
+          mx="auto"
+          mt="8"
+          p="6"
+          borderWidth="1px"
+          rounded="lg"
+          borderColor="teal"
+        >
+          <form onSubmit={formik.handleSubmit}>
+            <FormControl
+              id="name"
+              isInvalid={formik.touched.name && formik.errors.name}
+            >
+              <FormLabel>Name</FormLabel>
+              <Input
+                type="text"
+                name="name"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.name}
+                borderColor="teal"
+              />
+              <FormErrorMessage>{formik.errors.name}</FormErrorMessage>
+            </FormControl>
 
-        <StyledLabel>
-          Number
-          <StyledField name="number" type="tel" />
-          <Error name="number" component="span" />
-        </StyledLabel>
+            <FormControl
+              id="number"
+              isInvalid={formik.touched.number && formik.errors.number}
+              mt="4"
+            >
+              <FormLabel>Number</FormLabel>
+              <Input
+                type="text"
+                name="number"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.number}
+                borderColor="teal"
+              />
+              <FormErrorMessage>{formik.errors.number}</FormErrorMessage>
+            </FormControl>
 
-        <StyledBtn type="submit">Add contact</StyledBtn>
-      </StyledForm>
+            <Button
+              mt="6"
+              colorScheme="teal"
+              size="md"
+              type="submit"
+              isLoading={formik.isSubmitting}
+            >
+              Add contact
+            </Button>
+          </form>
+        </Box>
+      )}
     </Formik>
   );
 };
