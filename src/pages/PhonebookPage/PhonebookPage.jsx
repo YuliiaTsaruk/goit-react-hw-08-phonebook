@@ -10,7 +10,7 @@ import {
 import { useEffect } from 'react';
 import { fetchContacts } from '../../redux/contacts/operations';
 
-export const MyPhonebook = () => {
+export default function PhonebookPage() {
   const contacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
@@ -42,4 +42,4 @@ export const MyPhonebook = () => {
       </Section>
     </Container>
   );
-};
+}
