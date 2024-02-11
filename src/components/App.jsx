@@ -31,7 +31,7 @@ export const App = () => {
       borderWidth="1px"
       borderRadius="lg"
       boxShadow="lg"
-      bgGradient="linear(to-b,  #c8f6fb, #5ed2f5)"
+      bgGradient="linear(to-b,  #c0f8ee, #7adbf9, #8cb9f9, #fdbad8)"
       maxW="720px"
       minHeight="100vh"
       mx="auto"
