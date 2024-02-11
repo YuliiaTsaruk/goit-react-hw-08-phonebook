@@ -2,6 +2,7 @@ import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/authOperations';
+
 import {
   Box,
   Button,
@@ -21,6 +22,7 @@ const registerSchema = Yup.object({
 
 export default function RegisterPage() {
   const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       name: '',

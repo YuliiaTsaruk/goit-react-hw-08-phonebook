@@ -18,16 +18,20 @@ export default function HomePage() {
             {isLoggedIn ? `Hello ${userName}!` : 'Welcome to Phonebook!'}
           </Text>
           <Text fontSize="xl">
-            {isLoggedIn
-              ? 'To view or add your contacts '
-              : 'Please, register or log in to get access to the phonebook.'}
-            <Link
-              as={ReactRouterLink}
-              to="/contacts"
-              textDecoration="underline"
-            >
-              click here
-            </Link>
+            {isLoggedIn ? (
+              <>
+                To view or add your contacts{' '}
+                <Link
+                  as={ReactRouterLink}
+                  to="/contacts"
+                  textDecoration="underline"
+                >
+                  click here
+                </Link>
+              </>
+            ) : (
+              'Please, register or log in to get access to the phonebook.'
+            )}
           </Text>
         </Stack>
       </Box>
