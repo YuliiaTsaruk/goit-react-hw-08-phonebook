@@ -1,5 +1,8 @@
 import { useSelector } from 'react-redux';
-import { selectIsLoggedIn, selectUserName } from '../redux/auth/authSelectors';
+import {
+  selectIsLoggedIn,
+  selectUserName,
+} from '../../redux/auth/authSelectors';
 import { Link } from 'react-router-dom';
 
 export default function HomePage() {

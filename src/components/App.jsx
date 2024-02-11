@@ -9,10 +9,10 @@ import { GlobalStyle } from './GlobalStyle';
 import { Toaster } from 'react-hot-toast';
 import { refresh } from '../redux/auth/authOperations';
 
-const HomePage = lazy(() => import('pages/HomePage'));
-const RegisterPage = lazy(() => import('pages/RegisterPage'));
-const LoginPage = lazy(() => import('pages/LoginPage'));
-const PhonebookPage = lazy(() => import('pages/PhonebookPage'));
+const HomePage = lazy(() => import('pages/HomePage/HomePage'));
+const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
+const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
+const PhonebookPage = lazy(() => import('pages/PhonebookPage/PhonebookPage'));
 
 export const App = () => {
   const isRefreshing = useSelector(selectIsRefreshing);

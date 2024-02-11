@@ -1,6 +1,6 @@
 import { ContactForm, Filter, ContactList } from 'components';
 
-import { Container, MaineTitle, Section, Title } from './MyPhonebook.styled';
+import { Container, MaineTitle, Section, Title } from './PhonebookPage.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectContacts,
